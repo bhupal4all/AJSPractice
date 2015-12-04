@@ -1,2 +1,5 @@
-# pjmt
-Project Management
+# Angular JS Practice
+Practicing ng ...
+
+## Tutorials
+http://www.tutorialspoint.com/angularjs
