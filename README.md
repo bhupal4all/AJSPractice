@@ -1,2 +1,2 @@
-# AJSPractice
-Angular JS Practice
+# pjmt
+Project Management
