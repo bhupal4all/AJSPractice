@@ -29,4 +29,9 @@ public class WelcomeController {
 		model.put("message", this.message);
 		return "views";
 	}
+	
+	@RequestMapping("/service")
+	public String service(Map<String, Object> model){
+		return "service";
+	}
 }
