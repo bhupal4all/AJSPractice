@@ -34,4 +34,9 @@ public class WelcomeController {
 	public String service(Map<String, Object> model){
 		return "service";
 	}
+	
+	@RequestMapping("/custom")
+	public String custom(Map<String, Object> model){
+		return "custom";
+	}
 }
