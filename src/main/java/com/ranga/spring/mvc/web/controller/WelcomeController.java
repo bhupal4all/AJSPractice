@@ -23,4 +23,10 @@ public class WelcomeController {
 		throw new RuntimeException("Foo");
 	}
 
+	@RequestMapping("/views")
+	public String views(Map<String, Object> model){
+		model.put("time", new Date());
+		model.put("message", this.message);
+		return "views";
+	}
 }

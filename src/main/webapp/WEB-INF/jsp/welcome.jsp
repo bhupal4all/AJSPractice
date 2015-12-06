@@ -149,5 +149,39 @@
 	</div>
 	<hr/>
 
+	<div ng-controller="formCtrlr">
+		<h2 class="hdr">{{ 'FORM - ng-click' }}</h2>
+		<form name="studentForm" novalidate>
+			<div>
+				<table>
+					<tr>
+						<td><label>First Name</label></td>
+						<td><input name = "firstname" type = "text" ng-model = "firstName" required>
+						 <span style = "color:red" ng-show = "studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+							<span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
+						 </span>
+					  </td>
+				  </tr>
+					<tr><td>Last Name</td><td><input type="text" ng-model="lastName" required /></td></tr>
+					<tr><td><button ng-click="reset()" >Reset</button></td><td><button ng-click="" >Submit</button></td></tr>
+				</table>
+			</div>
+		</form>
+	</div>
+
+	<div ng-controller="formCtrlr">
+		<h2 class="hdr">{{ 'ng-include - NOT WORKING' }}</h2>
+		<p>loading from ${pageContext.request.contextPath}/resources/includes/student.jsp</p>
+		<div ng-include="'${pageContext.request.contextPath}/resources/includes/student.jsp'"></div>
+	</div>
+
+	<div ng-controller="httpCtrlr">
+		<h2 class="hdr">{{ 'http' }}</h2>
+		
+		<table border=1>
+			<tr><th>Id</th><th>Name</th><th>Percentile</th></tr>
+			<tr ng-repeat="student in students"><td>{{ student.Id }}</td><td>{{ student.Name }}</td><td>{{ student.Percentile }}</td></tr>
+		</table>
+	</div>
 </body>
 </html>

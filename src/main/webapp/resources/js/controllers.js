@@ -22,3 +22,29 @@ demoApp.controller("exprCtrlr", function($scope){
 demoApp.controller("domCtrlr", function($scope){
 	$scope.clicked=0;
 });
+
+demoApp.controller("formCtrlr", function($scope){
+	$scope.reset=function(){
+		$scope.firstName='Yagna';
+		$scope.lastName='Shree';
+	};
+	
+	$scope.reset();
+});
+
+demoApp.controller("includeCtrlr", function($scope){
+	$scope.student={
+		firstName:'Yagna Shree', 
+		lastName:'Gangavarapu', 
+		fee: 500
+	};
+});
+
+
+demoApp.controller("httpCtrlr", function($scope, $http){
+	url = "resources/data/data.txt";
+	
+	$http.get(url).success(function(response){
+		$scope.students = response;
+	});
+});
