@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AngularJS Services example</title>
+    <title>AngularJS Services/DI example</title>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
@@ -15,11 +15,13 @@
   </head>
 
   <body ng-app="sampleApp">
-	<center><h1>AngularJS Services Demo</h1></center>
+	<center><h1>AngularJS Services/DI Demo</h1></center>
+	<hr/>
     <div class="container">
 		<div class="row">
 			<div class="col-md-3">
 			   <ul class="nav">
+					<li><a href="#Welcome"> Welcome </a></li>
 					<li><a href="#Addition"> Addition </a></li>
 					<li><a href="#Multiplication"> Multiplication </a></li>
 				</ul>
@@ -32,6 +34,10 @@
 
 	<script type="text/ng-template" id="Welcome.html">
 		<h2>{{message}}</h2>
+		<p>Default Value: {{ defaultVal }}</p>
+		<p>Factory: MathOperations</p>
+		<p>Service: CalcService</p>
+		<p>Constant: {{ constantVal }}</p>
 	</script>
 
 	<script type="text/ng-template" id="Common.html">
@@ -39,6 +45,7 @@
 		<table>
 			<tr><td>Operand 1</td><td><input type="number" ng-model="operand1" /></td></tr>
 			<tr><td>Operand 2</td><td><input type="number" ng-model="operand2" /></td></tr>
+			<br/>
 			<tr><td>Result</td><td>{{ execute(operand1, operand2) }}</td></tr>
 		</table>
 	</script>

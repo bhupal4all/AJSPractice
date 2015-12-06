@@ -1,7 +1,10 @@
 var sampleApp = angular.module('sampleApp', ['ngRoute']);
 
-// Factory for Service
-sampleApp.factory('MathService', function(){
+sampleApp.value("defaultVal",1);
+sampleApp.constant("constVal","This is Constant");
+
+// create a factory "MathOperations" which provides methods for operations
+sampleApp.factory('MathOperations', function(){
 	var factory = {};
 	
 	factory.multiply = function(a, b){
@@ -15,13 +18,15 @@ sampleApp.factory('MathService', function(){
 	return factory;
 });
 
-sampleApp.service('CalcService', function(MathService){
+// inject the factory "MathOperations" into service to utilize exiting methods
+// create a service which defines a methods for add/mul 
+sampleApp.service('CalcService', function(MathOperations){
 	this.add = function(a, b){
-		return MathService.addition(a, b);
+		return MathOperations.addition(a, b);
 	};
 	
 	this.mul = function(a, b){
-		return MathService.multiply(a, b);
+		return MathOperations.multiply(a, b);
 	};
 });
 
@@ -42,16 +47,22 @@ sampleApp.config(['$routeProvider',
 	});
 }]);
 
-sampleApp.controller('WelcomeController', function($scope) {
+sampleApp.controller('WelcomeController', function($scope, defaultVal, constVal) {
 	$scope.message = 'Welcome to Services';
+	$scope.defaultVal = defaultVal;
+	$scope.constantVal = constVal;
 });
 
-sampleApp.controller('AdditionController', function($scope, CalcService) {
+sampleApp.controller('AdditionController', function($scope, CalcService, defaultVal) {
 	$scope.title = 'Addition of Two Numbers ';
+	$scope.operand1 = defaultVal;
+	$scope.operand2 = defaultVal;
 	$scope.execute = CalcService.add;
 });
 
-sampleApp.controller('MultiplicationController', function($scope, CalcService) {
+sampleApp.controller('MultiplicationController', function($scope, CalcService, defaultVal) {
 	$scope.title = 'Multiplication of Two Numbers';
+	$scope.operand1 = defaultVal;
+	$scope.operand2 = defaultVal;
 	$scope.execute = CalcService.mul;
 });
