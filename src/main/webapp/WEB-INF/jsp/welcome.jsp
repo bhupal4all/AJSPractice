@@ -150,7 +150,7 @@
 	<hr/>
 
 	<div ng-controller="formCtrlr">
-		<h2 class="hdr">{{ 'FORM - ng-click' }}</h2>
+		<h2 class="hdr">{{ 'FORM - ng-click - NOT WORKING' }}</h2>
 		<form name="studentForm" novalidate>
 			<div>
 				<table>
@@ -170,7 +170,7 @@
 	</div>
 
 	<div ng-controller="formCtrlr">
-		<h2 class="hdr">{{ 'ng-include - NOT WORKING' }}</h2>
+		<h2 class="hdr">{{ 'ng-include' }}</h2>
 		<p>loading from ${pageContext.request.contextPath}/resources/includes/student.jsp</p>
 		<div ng-include="'${pageContext.request.contextPath}/resources/includes/student.jsp'"></div>
 	</div>
