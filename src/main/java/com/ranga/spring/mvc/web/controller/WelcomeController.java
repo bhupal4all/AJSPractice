@@ -39,4 +39,9 @@ public class WelcomeController {
 	public String custom(Map<String, Object> model){
 		return "custom";
 	}
+	
+	@RequestMapping("/filter")
+	public String filter(Map<String, Object> model){
+		return "filter";
+	}
 }
