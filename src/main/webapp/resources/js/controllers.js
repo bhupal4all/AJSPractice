@@ -24,9 +24,16 @@ demoApp.controller("domCtrlr", function($scope){
 });
 
 demoApp.controller("formCtrlr", function($scope){
+	$scope.master = {};
+	
+	$scope.update=function(user){
+		alert('update');
+		$scope.master = angular.copy(user);
+	};
+	
 	$scope.reset=function(){
-		$scope.firstName='Yagna';
-		$scope.lastName='Shree';
+		alert('reset');
+		$scope.user = angular.copy($scope.master);
 	};
 	
 	$scope.reset();

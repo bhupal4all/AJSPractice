@@ -151,25 +151,38 @@
 
 	<div ng-controller="formCtrlr">
 		<h2 class="hdr">{{ 'FORM - ng-click - NOT WORKING' }}</h2>
-		<form name="studentForm" novalidate>
+		<form novalidate class="css-form" name="form">		
 			<div>
 				<table>
 					<tr>
-						<td><label>First Name</label></td>
-						<td><input name = "firstname" type = "text" ng-model = "firstName" required>
-						 <span style = "color:red" ng-show = "studentForm.firstname.$dirty && studentForm.firstname.$invalid">
-							<span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
-						 </span>
-					  </td>
+						<td>First Name</td>
+						<td><input type="text" ng-model="user.firstName" name="uFName" required><span style="color: red" ng-show="form.$submitted || form.uFName.$touched">Required Field<span></td>
 				  </tr>
-					<tr><td>Last Name</td><td><input type="text" ng-model="lastName" required /></td></tr>
-					<tr><td><button ng-click="reset()" >Reset</button></td><td><button ng-click="" >Submit</button></td></tr>
+				  <tr>
+					  <td>Last Name</td>
+					  <td><input type="text" ng-model="user.lastName" required></td>
+				  </tr>
+				  <tr>
+					  <td><input type="button" ng-click="reset()" value="Reset"></input></td>
+					  <td><input type="submit" ng-click="update(user)" value="Submit"></input></td>
+				  </tr>
 				</table>
+				
+				<style type="text/css">
+			      input.ng-invalid.ng-touched {
+					background-color: #FA787E;
+				  }
+				  input.ng-valid.ng-touched {
+					background-color: lime;
+				  }
+				</style>
+				<pre>user = {{ user | json }} </pre>
+				<pre>master = {{ master | json }}</pre
 			</div>
 		</form>
 	</div>
 
-	<div ng-controller="formCtrlr">
+	<div ng-controller="includeCtrlr">
 		<h2 class="hdr">{{ 'ng-include' }}</h2>
 		<p>loading from ${pageContext.request.contextPath}/resources/includes/student.jsp</p>
 		<div ng-include="'${pageContext.request.contextPath}/resources/includes/student.jsp'"></div>
