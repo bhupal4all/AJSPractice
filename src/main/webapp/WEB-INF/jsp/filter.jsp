@@ -20,7 +20,8 @@
 	<div ng-controller="filterController">
 		<input type="text" ng-model="inputStr" /><br/>
 		<label>Entered : </label>{{ inputStr }}<br/>
-		<label>Reversed : </label> {{ inputStr | reverse }}
+		<label>Reversed : </label> {{ inputStr | reverse }}<br/>
+		<label>Reversed + UpperCase : </label> {{ inputStr | reverse:true }}
 	</div>
     
     <script src="${pageContext.request.contextPath}/resources/js/angular.js"></script>   
