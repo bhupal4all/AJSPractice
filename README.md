@@ -1,5 +1,7 @@
 # Angular JS Practice
-Practicing ng ...
+Practicing Angular Through examples
 
 ## Tutorials
-http://www.tutorialspoint.com/angularjs
+* [AngularJS Hub] (http://www.angularjshub.com/examples)
+* [Curran Examples] (https://curran.github.io/screencasts/introToAngular/exampleViewer/#/)
+* [AngularJS Tutorial Point](http://www.tutorialspoint.com/angularjs)
