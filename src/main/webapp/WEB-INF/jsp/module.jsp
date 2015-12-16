@@ -5,22 +5,23 @@
 
 <html lang="en">
 <head>
-   <title>Angular Basic JS</title>
+   <title>Angular Module JS</title>
    <script src="${pageContext.request.contextPath}/resources/js/angular.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
+
+   <script src="${pageContext.request.contextPath}/resources/js/practice/app.js"></script>  
+   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/basic.js"></script>   
 </head>
 <body style="background-color: WhiteSmoke">
-<div class="container">
+<div class="container" ng-app='myApp' ng-init="firstname = 'Yagna'; lastname='Shree'">
 	<div class="page-header">
-		<h1>Angular JS</h1>
+		<h1>Angular JS - Module</h1>
 	</div>
 	
-	<div class="col-md-3">
-		<ul class="list-group">
-			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=basic">Basic</a></li>
-			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=module">Module</a></li>
-		</ul>
+	<div class="row"> 
+		<div class="col-md-6">
+		</div>
 	</div>
 </div>
 </body>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WelcomeController {
@@ -18,30 +19,13 @@ public class WelcomeController {
 		return "welcome";
 	}
 
+	@RequestMapping("/page")
+	public String pages(Map<String, Object> model, @RequestParam String page){
+		return page;
+	}
+
 	@RequestMapping("/foo")
 	public String foo(Map<String, Object> model) {
 		throw new RuntimeException("Foo");
-	}
-
-	@RequestMapping("/views")
-	public String views(Map<String, Object> model){
-		model.put("time", new Date());
-		model.put("message", this.message);
-		return "views";
-	}
-	
-	@RequestMapping("/service")
-	public String service(Map<String, Object> model){
-		return "service";
-	}
-	
-	@RequestMapping("/custom")
-	public String custom(Map<String, Object> model){
-		return "custom";
-	}
-	
-	@RequestMapping("/filter")
-	public String filter(Map<String, Object> model){
-		return "filter";
 	}
 }
