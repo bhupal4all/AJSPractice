@@ -20,6 +20,7 @@
 		<ul class="list-group">
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=basic">Basic</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=module">Module</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=eventhandlers">Event Handlers</a></li>
 		</ul>
 	</div>
 </div>
