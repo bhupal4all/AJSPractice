@@ -10,7 +10,7 @@
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
 
-   <script src="${pageContext.request.contextPath}/resources/js/practice/mouseevents.js"></script>  
+   <script src="${pageContext.request.contextPath}/resources/js/practice/events.js"></script>  
    
    <style>
 	img { 
@@ -25,7 +25,7 @@
 	</div>
 	
 	<div class="row"> 
-		<h3>Click Events</h3>
+		<h3>Mouse Click Events</h3>
 		<div class="col-md-4">
 			<div ng-controller="clickController">
 				<input type="button" ng-click="clickFn()" value="Click Me !!!" /><br/>
@@ -66,6 +66,20 @@
 				<b>Mouse Leave : </b> {{ mouseLeaveDesc }} <br/>
 				<b>Mouse Move : </b> {{ mouseMoveDesc }} <br/>
 				<b>Mouse Over : </b> {{ mouseOverDesc }} <br/>
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div class="row"> 
+		<h3>Keyboard Events</h3>
+		<div ng-controller="keyboardController">
+			<div class="col-md-6">
+				<input type='text' ng-keyup="keyUpFn($event)" ng-keydown="keyDownFn($event)" ng-keypress="keyPressFn($event)" /><br/>
+				<label>Key Up: </label>{{ keyUpResult }}<br/>
+				<label>Key Down: </label>{{ keyDownResult }}<br/>
+				<label>Key Press: </label>{{ keyPressResult }}<br/>
+			</div>
+			<div class="col-md-6">
 			</div>
 		</div>
 	</div>

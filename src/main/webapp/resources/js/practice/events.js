@@ -112,6 +112,27 @@ angular.module('mouseModule', [])
 	});
 
 ///////////////////////////////////////////////////////////////////////////////
+// Keyboard Module
+///////////////////////////////////////////////////////////////////////////////	
+angular.module('keyboardModule', [])
+	.controller('keyboardController', function($scope){
+		$scope.keyUpFn = function($event){
+			$scope.keyUpResult = getKeyboardResult($event, 'Key Up');
+		};
+		$scope.keyDownFn = function($event){
+			$scope.keyDownResult = getKeyboardResult($event, 'Key Down');
+		};
+		$scope.keyPressFn = function($event){
+			$scope.keyPressResult = getKeyboardResult($event, 'Key Press');
+		};
+		
+		var getKeyboardResult = function(keyEvent, desc){
+			var key = (window.event ? keyEvent.keyCode : keyEvent.which);
+			return desc + ' (key code: ' + key + ', value: ' +  String.fromCharCode(key) + ')';
+		};
+	});
+	
+///////////////////////////////////////////////////////////////////////////////
 // Main Module
 ///////////////////////////////////////////////////////////////////////////////	
-angular.module('mainModule', ['clickModule','mouseModule']);
+angular.module('mainModule', ['clickModule','mouseModule','keyboardModule']);
