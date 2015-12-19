@@ -131,8 +131,25 @@ angular.module('keyboardModule', [])
 			return desc + ' (key code: ' + key + ', value: ' +  String.fromCharCode(key) + ')';
 		};
 	});
+
+///////////////////////////////////////////////////////////////////////////////
+// Change Event Module
+///////////////////////////////////////////////////////////////////////////////	
+angular.module('changeModule', [])
+	.controller('changeController', function($scope){
+		$scope.changeEventFn = function(){
+			$scope.inputTxtResult = $scope.inputTxt;
+		};
+	})	
+	.controller('checkedController', function($scope){
+		$scope.checkedEventFn = function(){
+			console.log('working'); 
+			$scope.checkedResult = 'Check Box 1 ? '+ ($scope.check1Selected ? 'CHECKED' : 'UNCHECKED') 
+				+', Check Box 2 ? ' + ($scope.check2Selected ? 'CHECKED' : 'UNCHECKED');
+		};
+	});
 	
 ///////////////////////////////////////////////////////////////////////////////
 // Main Module
 ///////////////////////////////////////////////////////////////////////////////	
-angular.module('mainModule', ['clickModule','mouseModule','keyboardModule']);
+angular.module('mainModule', ['clickModule','mouseModule','keyboardModule','changeModule']);

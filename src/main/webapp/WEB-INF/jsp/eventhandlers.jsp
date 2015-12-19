@@ -83,6 +83,20 @@
 			</div>
 		</div>
 	</div>
+	<hr/>
+	<div class="row"> 
+		<h3>Change Events</h3>
+		<div class="col-md-6" ng-controller="changeController">
+			With Change Event : <input type='text' ng-change="changeEventFn()" ng-model="inputTxt" /><br/>
+			Without Change Event : <input type='text' ng-model="inputTxt" /><br/>
+			<label>Result: </label>{{ inputTxtResult }}<br/>
+		</div>
+		<div class="col-md-6" ng-controller="checkedController">
+			Check Box 1 <input type='checkbox' ng-model="check1Selected" ng-change="checkedEventFn()" /><br/>
+			Check Box 2 <input type='checkbox' ng-model="check2Selected" ng-change="checkedEventFn()" /><br/>
+			<label>Result: </label>{{ checkedResult }}<br/>
+		</div>
+	</div>
 </div>
 </body>
 </html>
