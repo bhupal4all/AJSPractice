@@ -13,7 +13,7 @@
 <body style="background-color: WhiteSmoke">
 <div class="container">
 	<div class="page-header">
-		<h1>Angular JS</h1>
+		<h1>Angular JS {{ angular.version.full }}</h1>
 	</div>
 	
 	<div class="col-md-3">
@@ -23,6 +23,7 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=eventhandlers">Event Handlers</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=conditionaldisplay">Conditional Display</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=collections">Collections</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forfilters">Formating Filters</a></li>
 		</ul>
 	</div>
 </div>
