@@ -41,12 +41,18 @@ angular.module('mainModule', [])
 			}
 		}
 	}).controller('tableController', function($scope){
-		$scope.cValue = 'One';
-		$scope.arrayVals = [
-			{ name: 'One', value: '1'},
-			{ name: 'Two', value: '2'},
-			{ name: 'Three', value: '3'},
-			{ name: 'Four', value: '4'},
-			{ name: 'Five', value: '5'}
-			];
+		$scope.fValue = 'o';
+		$scope.aValues = [
+			{ name: "One", value: "1", category: "Gen"},
+			{ name: "Two", value: "2", category: "Pri"},
+			{ name: "Three", value: "3", category: "Gen"},
+			{ name: "Four", value: "4", category: "Pri"},
+			{ name: "Five", value: "5", category: "Gen"}
+		];
+
+		$scope.cValue = 'G';
+		// return true or false to keep the item in filtered array
+		$scope.customArrayFilter = function(obj){
+			return (obj.category.indexOf($scope.cValue) != -1);
+		};
 	});

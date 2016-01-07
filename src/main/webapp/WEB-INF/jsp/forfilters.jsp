@@ -67,22 +67,78 @@
 	<hr/>
 	<div class="row"> 
 		<div ng-controller="tableController">
+			<h3>Table Filters</h3>
 			<div class="col-md-6">
-				<h3>Table Filters</h3>
-				<label>Filter Value</label> <input type='text' ng-model='cValue' /> <br/>
-				<table border=1>
+				<p><label>Simple Filter</label> filtering across all the vlaues</p>
+				<label>Filter Value</label> <input type='text' ng-model='fValue' /> <br/>
+				<table class='table'>
 					<tr><th>Value</th><th>Name</th></tr>
-					<tr ng-repeat="arrVal in arrayVals">
-						<tr>{{ arrVal.value }}</tr>
-						<tr>{{ arrVal.name }}</tr>
+					<tr ng-repeat="val in aValues | filter:fValue">
+						<td>{{ val.value }}</td>
+						<td>{{ val.name }}</td>
 					</tr>
 				</table>
-				<p>Try to Type something </p>
 			</div>
 			<div class="col-md-6">
 			</div>
 		</div>
 	</div>
+	<div class="row"> 
+		<div ng-controller="tableController">
+			<div class="col-md-6">
+				<p><label>Object Properties</label> filtering using one of the vlaues (Alternative 1)</p>
+				<table class='table'>
+					<tr><th>Value&nbsp;<input type='text' ng-model='cValue' /> </th><th>Name&nbsp;<input type='text' ng-model='cName' /></th></tr>
+					<tr ng-repeat="val in aValues | filter:{value:cValue, name: cName}">
+						<td>{{ val.value }}</td>
+						<td>{{ val.name }}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<p><label>Object properties</label> filtering across all the vlaues (Alternative 2)</p>
+				<label>Filter for Name/Category</label> <input type='text' ng-model='cValue' /> <br/>
+				<label>Filter Value</label> <input type='text' ng-model='vValue' /> <br/>
+				<table class='table'>
+					<tr><th>Value</th><th>Name</th><th>category</th></tr>
+					<tr ng-repeat="val in aValues | filter:{$: cValue, value:vValue}">
+						<td>{{ val.value }}</td>
+						<td>{{ val.name }}</td>
+						<td>{{ val.category }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row"> 
+		<div ng-controller="tableController">
+			<div class="col-md-6">
+				<p><label>Sorting</label> Filtered Values</p>
+				<label>Filter Value </label> <input type='text' ng-model='cValue' /><br/>
+				<label>Value Count </label> {{filteredValues.length}} <p>Counting the filtered vlaues through another binding variable</p><br/>
+				<table class='table'>
+					<tr><th>Value</th><th>Name</th></tr>
+					<tr ng-repeat="val in filteredValues = (aValues | filter:cValue)">
+						<td>{{ val.value }}</td>
+						<td>{{ val.name }}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<p><label>Custom Filter</label> Writing our own filtering criteria through function</p>
+				<input type='text' ng-model='cValue' /> <i>Case Sensitive, Filter for Category</i><br/>
+				<table class='table'>
+					<tr><th>Value</th><th>Name</th><th>category</th></tr>
+					<tr ng-repeat="val in aValues | filter:customArrayFilter ">
+						<td>{{ val.value }}</td>
+						<td>{{ val.name }}</td>
+						<td>{{ val.category }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
 </div>
 </body>
 </html>
