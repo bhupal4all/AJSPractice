@@ -161,6 +161,12 @@
 				<label>Selected value </label><textarea>{{personValue|json}}</textarea> <br/>
 			</div>
 			<div class="col-md-6">
+				<h3>Group By, select one property and with disable</h3>
+				<p>Getting options from an object (json) array.  Grouping the options by property (sex)</p>
+				<select ng-model='personValue' ng-options="person as getPersonFullNameFn(person) group by person.sex disable when !person.active for person in peopleArray">
+					<option value=''>[ none ]</option>
+				</select><br/>
+				<label>Selected value </label><textarea>{{personValue|json}}</textarea> <br/>
 			</div>
 		</div>
 	</div>
