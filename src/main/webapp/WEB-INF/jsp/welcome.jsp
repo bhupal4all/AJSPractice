@@ -26,7 +26,7 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forfilters">Formating Filters</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forms">Forms</a></li>
 		</ul>
-	</div>
+	</div> 
 </div>
 </body>
 </html>
