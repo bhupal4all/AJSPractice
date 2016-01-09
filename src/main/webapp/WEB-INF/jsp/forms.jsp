@@ -43,25 +43,34 @@
 		<h1>Angular JS - Form Controls</h1>
 	</div>
 	
-	<div class="row"> 
+	<div class="row" ng-controller="formController"> 
 		<div >
-			<h3>Input Text Control</h3>
+			<form name='testForm'>
 			<div class="col-md-6">
-				<label class='inputTextLabel'>Text </label> <input class='inputTextForm' type='text' ng-model='iText'/> <br/>
-				<label class='inputTextLabel'>Email </label> <input class='inputTextForm' type='email' ng-model='iEmail'/> <br/>
-				<label class='inputTextLabel'>Url </label> <input class='inputTextForm' type='url' ng-model='iUrl'/> <br/>
-				<label class='inputTextLabel'>Password </label> <input class='inputTextForm' type='password' ng-model='iPassword'/> <br/>
-				<label class='inputTextLabel'>Number </label> <input class='inputTextForm' type='number' ng-model='iNumber'/> <br/>
-				<label class='inputTextLabel'>Text Area</label> <textarea class='inputTextareaForm' ng-model='iTextArea'></textarea> <br/>
-			</div>
-			<div class="col-md-6">
+				<h3>Input Text Control</h3>
+				<label class='inputTextLabel'>Text </label> <input class='inputTextForm' name='iText' type='text' ng-model='iText' ng-change="onTextChanged()"/> 
 				<label>Value</label> {{ iText }}<br/>
+				<label class='inputTextLabel'>Email </label> <input class='inputTextForm' name='iEmail' type='email' ng-model='iEmail' ng-change="onEmailChanged()"/>
 				<label>Value</label> {{ iEmail }}<br/>
+				<label class='inputTextLabel'>Url </label> <input class='inputTextForm' type='url' ng-model='iUrl'/> 
 				<label>Value</label> {{ iUrl }}<br/>
+				<label class='inputTextLabel'>Password </label> <input class='inputTextForm' type='password' ng-model='iPassword'/> 
 				<label>Value</label> {{ iPassword }}<br/>
+				<label class='inputTextLabel'>Number </label> <input class='inputTextForm' type='number' ng-model='iNumber'/> 
 				<label>Value</label> {{ iNumber }}<br/>
+				<label class='inputTextLabel'>Text Area</label> <textarea class='inputTextareaForm' ng-model='iTextArea'></textarea>
 				<label>Value</label> {{ iTextArea }}<br/>
 			</div>
+			<div class="col-md-6">
+				<h3>Tracking Changes</h3>
+				<label>Text Changed Count:</label> {{ textChangedCount }}<br/>
+				<label>Email Changed Count:</label> {{ emailChangedCount }}<br/>
+				<label>Text Status using Java Script</label> {{ getStatus(testForm.iText) }}<br/>
+				<label>Email Status using Java Script</label> {{ getStatus(testForm.iEmail) }}<br/>
+				<label>Form Status using Java Script</label> {{ getStatus(testForm) }}<br/>
+				<label>Form Status using Expression</label> {{ testForm.$dirty?'Dirty':testForm.$pristine?'Pristine':'UnKnown' }}<br/>
+			</div>
+			</form>
 		</div>
 	</div>
 	<hr/>

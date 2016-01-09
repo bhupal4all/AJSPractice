@@ -14,5 +14,23 @@ angular.module('mainModule', [])
     	$scope.getPersonFullNameFn = function(person){
     		return person.firstName + ' ' + person.lastName;
     	};
-	}]);
+	}]).controller('formController', ['$scope', function($scope){
+      $scope.textChangedCount = 0;
+      $scope.emailChangedCount = 0;
+
+      $scope.onTextChanged = function(){
+        $scope.textChangedCount+=1;
+      };
+
+      $scope.onEmailChanged = function(){
+        $scope.emailChangedCount += 1;
+      };
+
+      $scope.getStatus = function(item){
+        if (item.$dirty)
+          return "dirty";
+        if (item.$pristine)
+          return "pristine";
+      };
+  }]);
   
