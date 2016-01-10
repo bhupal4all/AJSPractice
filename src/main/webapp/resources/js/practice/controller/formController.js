@@ -62,5 +62,20 @@ angular.module('mainModule', [])
         $scope.person = person;
         console.log('Got the Data for submission to '+serverAddr);
       }
+  }])
+
+  .controller('resetFormController', ['$scope', function($scope){
+    $scope.person = {
+      firstname: 'Yagna',
+      lastname: 'Shree'
+    };
+
+    $scope.resetPerson = angular.copy($scope.person);
+
+    $scope.resetData = function(){
+      console.log('resetting data');
+      $scope.person = angular.copy($scope.resetPerson);
+      $scope.resetform.$setPristine();
+    }
   }]);
   

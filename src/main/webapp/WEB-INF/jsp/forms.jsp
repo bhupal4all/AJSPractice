@@ -360,6 +360,23 @@
 			<textarea>{{person|json}}</textarea>
 		</div>
 	</div>
+	<hr/>
+	<h3>Form Reset</h3>
+	<div class="row" ng-controller="resetFormController">
+		<div class="col-md-6">
+			<p>Setting the pristine back using $scope.personForm.$setPristine()</p>
+			<form name='resetform'>
+			<label>First Name:</label> <input type="text" name='firstname' ng-model='person.firstname' required /> <br/>
+			<label>Last Name:</label> <input type="text" name='lastname' ng-model='person.lastname' required /> <br/>
+			<br/>
+			<button type='button' ng-click='resetData()'>Reset</button>
+			</form>
+		</div>
+		<div class="col-md-6">
+			<label>resetform.$pristine = </label> {{resetform.$pristine}}<br/>
+			<label>resetform.$valid = </label> {{resetform.$valid}}<br/>
+		</div>
+	</div>
 </div>
 </body>
 </html>
