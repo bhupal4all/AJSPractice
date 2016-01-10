@@ -287,6 +287,32 @@
 			</form>
 		</div>
 	</div>
+	<hr/>
+	<div class='row'>
+		<h3>Nexted Forms</h3>
+		<p>To define nexted forms, we need to use 'ng-form'</p>
+		<div class='col-md-6'>
+			<form name='personForm'>
+				<label>First Name:</label> <input type='text' name='firstName' ng-model='person.firstName' required/>
+				<span class='glyphicon glyphicon-ok' style='color: green' ng-show='personForm.firstName.$valid'></span><br/>
+				<label>Last Name (Optional):</label> <input type='text' name='lastName' ng-model='person.lastName'/>
+				<span class='glyphicon glyphicon-ok' style='color: green' ng-show='personForm.lastName.$valid'></span><br/>
+
+				<ng-form name='addressForm'>
+					<label>City:</label> <input type='text' name='city' ng-model='person.city' required/>
+					<span class='glyphicon glyphicon-ok' style='color: green' ng-show='addressForm.city.$valid'></span><br/>	
+					<label>Zip:</label> <input type='number' name='zip' ng-model='person.zip' required/>
+					<span class='glyphicon glyphicon-ok' style='color: green' ng-show='addressForm.zip.$valid'></span><br/>
+				</ng-form>
+			</form>
+
+			<label>Person Form Status:</label> {{personForm.$valid}}<br/>
+			<label>Address Form Status:</label> {{personForm.addressForm.$valid}}<br/>
+		</div>
+		<div class='col-md-6'>
+			<label>Person Details:</label> <textarea>{{ person | json }}</textarea>
+		</div>
+	</div>
 </div>
 </body>
 </html>
