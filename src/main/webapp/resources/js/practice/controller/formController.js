@@ -14,7 +14,9 @@ angular.module('mainModule', [])
     	$scope.getPersonFullNameFn = function(person){
     		return person.firstName + ' ' + person.lastName;
     	};
-	}]).controller('formController', ['$scope', function($scope){
+	}])
+
+  .controller('formController', ['$scope', function($scope){
       $scope.textChangedCount = 0;
       $scope.emailChangedCount = 0;
 
@@ -31,6 +33,26 @@ angular.module('mainModule', [])
           return "dirty";
         if (item.$pristine)
           return "pristine";
+      };
+  }])
+
+  .controller('formValController', ['$scope', function($scope){
+      $scope.getCustomClass = function(item){
+        return{
+          invalidItem: item.$invalid && item.$dirty
+        };
+      };
+            
+      $scope.getCustomValidationError = function(item){
+        var msg = 'Field Required';
+
+        if (item.$dirty && item.$invalid){
+          msg = 'Field Required';
+        }else{
+          msg = '';
+        }
+
+        return msg;
       };
   }]);
   

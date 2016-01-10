@@ -41,6 +41,7 @@
 <div class="container" ng-app='mainModule'>
 	<div class="page-header">
 		<h1>Angular JS - Form Controls</h1>
+		<p>Discussing Different Type of Controls and its data population, Tracking the changes on controls, Form Validations</p>
 	</div>
 	
 	<div class="row" ng-controller="formController"> 
@@ -177,6 +178,113 @@
 				</select><br/>
 				<label>Selected value </label><textarea>{{personValue|json}}</textarea> <br/>
 			</div>
+		</div>
+	</div>
+	<hr/>
+	<h2>Input Validations</h2>
+	<style>
+		#defaultValidationClassesPart .ng-valid
+		{
+		  border: solid green 3px;
+		}
+
+		#defaultValidationClassesPart .ng-invalid
+		{
+		  border: solid red 3px;
+		}
+
+		#defaultValidationClassesPart2 .ng-valid
+		{
+		  border: solid green 3px;
+		}
+
+		#defaultValidationClassesPart2 .ng-invalid
+		{
+		  border: solid red 3px;
+		}
+
+		#customValidationClassesPart .invalidItem
+		{
+		  border: dashed red 2px;
+		}
+
+		form
+		{
+		  padding: 10px;
+		}
+
+		textarea
+		{
+		  width: 250px;
+		  height: 100px;
+		}			
+	</style>
+	<div class="row" ng-controller='formValController' id='defaultValidationClassesPart'> 
+		<h3>Single Field Validations</h3>
+		<div class="col-md-6">
+			<label>Text Field (min-3, max-10, pattern-A-Z0-9)</label><br/>
+			<input type='text' 
+				ng-model='textValue'
+				ng-minlength='3'
+				ng-maxlength='10'
+				ng-pattern='/^[A-Z0-9]+$/' /><br/>
+			<label>Value:</label> {{textValue}}
+		</div>
+		<div class="col-md-6">
+			<label>Number Field (min-10, max-1000)</label><br/>
+			<input type='number' 
+				ng-model='numberValue'
+				min='10'
+				max='1000' /><br/>
+			<label>Value:</label> {{numberValue}}
+		</div>
+	</div>
+	<div class="row" id='defaultValidationClassesPart2' >
+		<form name="testForm" novalidate>
+			<h3>Form Validations</h3>
+			<div class="col-md-6" id='formValId'>
+				<label>Text Field</label><br/>
+				<input type='text' 
+					name = 'fText'
+					ng-model='fTextValue'
+					ng-minlength='3'
+					ng-maxlength='10'
+					ng-pattern='/^[A-Z0-9]+$/' required/><br/>
+				<label>Value:</label> {{fTextValue}}<br/>
+				<label>Error Messages: </label>
+				<span ng-if='testForm.fText.$error.minlength'>[Text is Too Short]</span>
+				<span ng-if='testForm.fText.$error.maxlength'>[Text is Too Long]</span>
+				<span ng-if='testForm.fText.$error.pattern'>[Enter only 'A' to 'Z' and '0' to '9']</span>
+				<span ng-if='testForm.fText.$error.required'>[Please Enter some text]</span><br/>
+				<textarea>{{testForm.fText.$error|json}}</textarea>
+			</div>
+			<div class="col-md-6">
+				<label>Email Validation</label><br/>
+				<input type='email' 
+					name = 'fEmail'
+					ng-model='fEmailValue' /><br/>
+				<label>Value:</label> {{fEmailValue}}<br/>
+				<label>Status:</label> <span ng-if='testForm.fEmail.$valid'>Valid</span><br/>
+				<label>Error Messages: </label>
+				<span ng-if='testForm.fEmail.$error.error'>[Pleas enter valid email]</span>
+				<textarea>{{testForm.fEmail.$error|json}}</textarea>					
+			</div>
+			<label>Form Status:</label><span ng-if='testForm.$valid'>Valid</span><span ng-if='testForm.$invalid'>Invalid</span>
+		</form>
+	</div>
+	<div class='row' id='customValidationClassesPart'>
+		<div class='col-md-6' ng-controller='formValController'>
+			<h3>Custom CSS Classes</h3>
+			<form name='personForm' novalidate>
+				<p>Check if First name is mandatory <input type='checkbox' ng-model='personFastnameRequired'/></p>
+				<label>Perston Firstname:</label> 
+				<input type='text' name='firstName' ng-model='person.firstName' ng-required='personFastnameRequired' ng-class='getCustomClass(personForm.firstName)' />
+				<span ng-show="personForm.firstName.$invalid" style="color: red">{{ getCustomValidationError(personForm.firstName) }}</span><br/>
+				<label>Perston Lastname:</label> 
+				<input type='text' name='lastName' ng-model='person.lastName' ng-class='getCustomClass(personForm.lastName)' required/>
+				<span ng-show="personForm.lastName.$invalid" style="color: red">{{ getCustomValidationError(personForm.lastName) }}</span><br /><br/>
+				<label>Full Name:</label> {{ person.firstName}} {{ person.lastName }}
+			</form>
 		</div>
 	</div>
 </div>
