@@ -54,5 +54,13 @@ angular.module('mainModule', [])
 
         return msg;
       };
+  }])
+
+  .controller('formSubmissionController', ['$scope', function($scope){
+      $scope.person = {};
+      $scope.submitData = function(person, serverAddr){
+        $scope.person = person;
+        console.log('Got the Data for submission to '+serverAddr);
+      }
   }]);
   

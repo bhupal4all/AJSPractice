@@ -313,6 +313,53 @@
 			<label>Person Details:</label> <textarea>{{ person | json }}</textarea>
 		</div>
 	</div>
+	<hr/>
+	<h3>Form Submission</h3>
+	<div class='row'>
+		<div class='col-md-6'>
+			<h3>Regular Form Submission</h3>
+			<form name='personForm1' action='' novalidate>
+				<label>First Name: </label> <input type="text" name='firstName' ng-model='person.firstName' required/><br/>
+				<label>Last Name: </label> <input type="text" name='lastName' ng-model='person.lastName' required/><br/>
+				<br/>
+				<button type='submit' class='btn btn-default' ng-disabled="personForm1.$invalid">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class='row' ng-controller="formSubmissionController">
+		<div class='col-md-6'>
+			<h3>Ajax Form Submission (ng-submit)</h3>
+			<p>Submitting the data to server thourgh ng-submit.</p>
+			<form name='personForm2' ng-submit="submitData(person2, 'serverAddress')" novalidate>
+				<label>First Name: </label> <input type="text" name='firstName' ng-model='person2.firstName' required/><br/>
+				<label>Last Name: </label> <input type="text" name='lastName' ng-model='person2.lastName' required/><br/>
+				<br/>
+				<button type='submit' class='btn btn-default' ng-disabled="personForm2.$invalid">Submit</button>
+			</form>
+		</div>
+		<div class='col-md-6'>
+			<h3>Submitted Data</h3>
+			<textarea>{{person|json}}</textarea>
+		</div>
+	</div>
+	<div class='row' ng-controller="formSubmissionController">
+		<div class='col-md-6'>
+			<h3>Ajax Form Submission (ng-click)</h3>
+			<p>Submitting the data to server thourgh ng-click.</p>
+			<form name='personForm3' novalidate>
+				<label>First Name: </label> <input type="text" name='firstName' ng-model='person3.firstName' required/><br/>
+				<label>Last Name: </label> <input type="text" name='lastName' ng-model='person3.lastName' required/><br/>
+				<br/>
+				<button type='submit' class='btn btn-default' 
+					ng-click="submitData(person3, 'serverAddress')" 
+					ng-disabled="personForm3.$invalid">Submit</button>
+			</form>
+		</div>
+		<div class='col-md-6'>
+			<h3>Submitted Data</h3>
+			<textarea>{{person|json}}</textarea>
+		</div>
+	</div>
 </div>
 </body>
 </html>
