@@ -84,15 +84,21 @@
 			<textarea class='logTextAreaMedium'>{{compilePrePostLinkFunctionLog}}</textarea>
 		</div>
 	</div>
-	<hr/>
 	<div class="row" > 
 		<div class="col-md-6">
 			<h3>7. Nested Directives</h3>
-			<div rb-nested-directive-1='1'></div>
-			<textarea class='logTextAreaMedium'>{{rbNestedDirectiveLog}}</textarea>
+			<div rb-nested-directive-1='1'>
+				<div rb-nested-directive-2='2'>
+					<div rb-nested-directive-3='3'></div>
+				</div>
+			</div>
+			<textarea class='logTextAreaBig'>{{rbNestedDirectiveLog}}</textarea>
 		</div>
 		<div class="col-md-6">
-			<h3>8. Compile Function</h3>
+			<h3>8. Miltiple Directives</h3>
+			<div rb-multi-directive-1='1' rb-multi-directive-2='2' rb-multi-directive-3='3'>
+			</div>
+			<textarea class='logTextAreaBig'>{{rbMultiDirectiveLog}}</textarea>
 		</div>
 	</div>
 </div>

@@ -6,6 +6,7 @@ var prePostLinkLog = '';
 var compileFunctionLog = '';
 var compilePostLinkFunctionLog = '';
 var rbNestedDirectiveLog = '';
+var rbMultiDirectiveLog = '';
 
 var logFunction = function(logVar, directive, message){
 	if (logScope){
@@ -28,6 +29,7 @@ angular.module('mainModule', [])
 		$scope.compilePostLinkFunctionLog = compilePostLinkFunctionLog;
 		$scope.compilePrePostLinkFunctionLog = compilePrePostLinkFunctionLog;
 		$scope.rbNestedDirectiveLog = rbNestedDirectiveLog;
+		$scope.rbMultiDirectiveLog = rbMultiDirectiveLog;
 
 		logScope = $scope;
 
@@ -151,29 +153,123 @@ angular.module('mainModule', [])
 			}
 		};		
 	})
-	
-	.directive('rbNestedDirective1', function(){
+
+	.directive('rbNestedDirective2', function(){
 		// Initialization
-		logFunction('rbNestedDirectiveLog', 'rbNestedDirective1', 'Initialization');
+		logFunction('rbNestedDirectiveLog', 'rbNestedDirective2', 'Initialization');
 
 		// Definition Object
 		return {
 			// Compile functions
 			compile: function(element, attrs){
-				logFunction('rbNestedDirectiveLog', 'rbNestedDirective1', 'compile - '+attrs.rbNestedDirective1);
+				logFunction('rbNestedDirectiveLog', 'rbNestedDirective2', 'compile - '+attrs.rbNestedDirective2);
 
 				return {
 					// Post Compile Function
 					pre: function(scope, element, attrs){
-						logFunction('rbNestedDirectiveLog', 'rbNestedDirective1', 'compile pre - '+attrs.rbNestedDirective1);
+						logFunction('rbNestedDirectiveLog', 'rbNestedDirective2', 'compile pre - '+attrs.rbNestedDirective2);
 					},
 					// Post Compile Function
 					post: function(scope, element, attrs){
-						logFunction('rbNestedDirectiveLog', 'rbNestedDirective1', 'compile post - '+attrs.rbNestedDirective1);
+						logFunction('rbNestedDirectiveLog', 'rbNestedDirective2', 'compile post - '+attrs.rbNestedDirective2);
+					}
+				};
+			}
+		};		
+	})
+
+	.directive('rbNestedDirective3', function(){
+		// Initialization
+		logFunction('rbNestedDirectiveLog', 'rbNestedDirective3', 'Initialization');
+
+		// Definition Object
+		return {
+			// Compile functions
+			compile: function(element, attrs){
+				logFunction('rbNestedDirectiveLog', 'rbNestedDirective3', 'compile - '+attrs.rbNestedDirective3);
+
+				return {
+					// Post Compile Function
+					pre: function(scope, element, attrs){
+						logFunction('rbNestedDirectiveLog', 'rbNestedDirective3', 'compile pre - '+attrs.rbNestedDirective3);
+					},
+					// Post Compile Function
+					post: function(scope, element, attrs){
+						logFunction('rbNestedDirectiveLog', 'rbNestedDirective3', 'compile post - '+attrs.rbNestedDirective3);
+					}
+				};
+			}
+		};		
+	})
+
+	.directive('rbMultiDirective1', function(){
+		// Initialization
+		logFunction('rbMultiDirectiveLog', 'rbMultiDirective1', 'Initialization');
+
+		// Definition Object
+		return {
+			// Compile functions
+			compile: function(element, attrs){
+				logFunction('rbMultiDirectiveLog', 'rbMultiDirective1', 'compile - '+attrs.rbMultiDirective1);
+
+				return {
+					// Post Compile Function
+					pre: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective1', 'compile pre - '+attrs.rbMultiDirective1);
+					},
+					// Post Compile Function
+					post: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective1', 'compile post - '+attrs.rbMultiDirective1);
+					}
+				};
+			}
+		};		
+	})
+
+	.directive('rbMultiDirective2', function(){
+		// Initialization
+		logFunction('rbMultiDirectiveLog', 'rbMultiDirective2', 'Initialization');
+
+		// Definition Object
+		return {
+			// Compile functions
+			compile: function(element, attrs){
+				logFunction('rbMultiDirectiveLog', 'rbMultiDirective2', 'compile - '+attrs.rbMultiDirective2);
+
+				return {
+					// Post Compile Function
+					pre: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective2', 'compile pre - '+attrs.rbMultiDirective2);
+					},
+					// Post Compile Function
+					post: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective2', 'compile post - '+attrs.rbMultiDirective2);
+					}
+				};
+			}
+		};		
+	})
+
+	.directive('rbMultiDirective3', function(){
+		// Initialization
+		logFunction('rbMultiDirectiveLog', 'rbMultiDirective3', 'Initialization');
+
+		// Definition Object
+		return {
+			// Compile functions
+			compile: function(element, attrs){
+				logFunction('rbMultiDirectiveLog', 'rbMultiDirective3', 'compile - '+attrs.rbMultiDirective3);
+
+				return {
+					// Post Compile Function
+					pre: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective3', 'compile pre - '+attrs.rbMultiDirective3);
+					},
+					// Post Compile Function
+					post: function(scope, element, attrs){
+						logFunction('rbMultiDirectiveLog', 'rbMultiDirective3', 'compile post - '+attrs.rbMultiDirective3);
 					}
 				};
 			}
 		};		
 	});
-
-
