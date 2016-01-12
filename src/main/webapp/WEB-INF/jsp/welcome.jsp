@@ -26,6 +26,7 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forfilters">Formating Filters</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forms">Forms</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=customdirectives">Custom Directives</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-template">Custom Directives - Templates</a></li>
 		</ul>
 	</div> 
 </div>

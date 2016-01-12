@@ -1,0 +1,1 @@
+Custom Directive Message (tempalteUrl): <strong>{{message}}</strong>
