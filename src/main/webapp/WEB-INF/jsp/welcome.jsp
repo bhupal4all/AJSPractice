@@ -27,6 +27,7 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=forms">Forms</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=customdirectives">Custom Directives</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-template">Custom Directives - Templates</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-scope">Custom Directives - Scope</a></li>
 		</ul>
 	</div> 
 </div>
