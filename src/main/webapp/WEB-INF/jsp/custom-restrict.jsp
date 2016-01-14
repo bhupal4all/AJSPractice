@@ -18,7 +18,13 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h3>1. Directive as Element</h3>
-			<element-dir></element-dir>
+			<element-dir>
+				This Content wouldnt be visible
+			</element-dir>
+			<br/>
+			<element-dir2>
+				This content would be changed to bold, italic, underline.
+			</element-dir2>
 			<br/>
 
 			<h3>2. Directive as Attribute</h3>

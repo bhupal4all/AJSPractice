@@ -14,6 +14,19 @@ angular.module('mainModule', [])
 		};
 	})
 
+	.directive('elementDir2', function(){
+		return {
+			scope: true,
+			restrict: "E",
+			link: function(scope, element, attributes){
+				var innerHTML = element.html();
+				innerHTML = '<strong><i><u>'+innerHTML+'</i></u></strong>';
+
+				element.html(innerHTML);
+			}
+		};
+	})
+
 	.directive('attribute', function(){
 		return {
 			scope: true,
