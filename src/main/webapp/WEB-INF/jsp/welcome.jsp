@@ -31,6 +31,7 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-controller">Custom Directives - Controller</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-priority">Custom Directives - Priority</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-restrict">Custom Directives - Restrict</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-transclude">Custom Directives - Transclude</a></li>
 		</ul>
 	</div> 
 </div>
