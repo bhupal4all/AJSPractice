@@ -7,9 +7,9 @@
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
 
    <!-- Custom Script Files -->
-   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing.js"></script>  
-   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing-hashbang.js"></script>  
-   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing-html5.js"></script>  
+   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing-location.js"></script>  
+   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing-location-hashbang.js"></script>  
+   <script src="${pageContext.request.contextPath}/resources/js/practice/controller/routing-location-html5.js"></script>  
 </head>
 <body style="background-color: WhiteSmoke">
 <div class="container">
