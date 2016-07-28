@@ -32,7 +32,9 @@
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-priority">Custom Directives - Priority</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-restrict">Custom Directives - Restrict</a></li>
 			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=custom-transclude">Custom Directives - Transclude</a></li>
-			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=routing">Routing</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=routing-location">Location Routing</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=routing-route">Route Routing</a></li>
+			<li class="list-group-item"><a href="${pageContext.request.contextPath}/page?page=http-service">Http Service</a></li>
 		</ul>
 	</div> 
 </div>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class WelcomeController {
@@ -27,5 +28,11 @@ public class WelcomeController {
 	@RequestMapping("/foo")
 	public String foo(Map<String, Object> model) {
 		throw new RuntimeException("Foo");
+	}
+
+	@RequestMapping("/simple")
+	@ResponseBody
+	public String pages(Map<String, Object> model){
+		return "Simple Get Result from Server";
 	}
 }
