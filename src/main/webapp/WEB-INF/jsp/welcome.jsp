@@ -6,9 +6,11 @@
 <html lang="en">
 <head>
    <title>Angular JS</title>
+   <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/angular.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/mustache.min.js"></script>   
+
    
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
 </head>
@@ -50,8 +52,9 @@
 
 <script>
 	// A simple module with no dependencies
-	angular.module("mainModule", [])
-		.controller("simpleController", function($scope) {
+	var app = angular.module("mainModule", []);
+	
+	app.controller("simpleController", function($scope) {
 			$scope.tasks = [{
 				task: 'One',
 				done: true
