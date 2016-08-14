@@ -10,7 +10,6 @@
    <script src="${pageContext.request.contextPath}/resources/js/angular.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/mustache.min.js"></script>   
-
    
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
 </head>
@@ -53,59 +52,78 @@
 <script>
 	// A simple module with no dependencies
 	var app = angular.module("mainModule", []);
-	
-	app.controller("simpleController", function($scope) {
-			$scope.tasks = [{
+
+	app.service('TodoService',function(){
+		var tasks = [{
 				task: 'One',
+				done: false
+			}, {
+				task: 'Two',
 				done: true
 			}];
 
-			$scope.btnLabel = "Add";
+		this.getTasks = function() {
+			return tasks;
+		};
+
+		this.markTaskDone = function(task){
+			task.done = true;
+		}
+
+		this.addTask = function(taskName){
+			tasks.push({
+				task: taskName,
+				done: false
+			});
+		};
+
+		this.getRemaining = function() {
+			var count = 0;
+			angular.forEach(tasks, function(task) {
+				if (!task.done) count++;
+			});
+
+			return count;
+		};
+
+		this.deleteTask = function(task) {
+			var index = tasks.indexOf(task);
+			tasks.splice(index, 1);
+		};
+
+		this.clearCompletedTasks = function() {
+			var i = tasks.length;
+			while (i--){
+				var task = tasks[i];
+				if (task.done) {
+					deleteTask(task);
+				}
+			}
+		};
+	});
+	
+	app.controller("simpleController", function($scope, TodoService) {
+		$scope.tasks = TodoService.getTasks();
+		$scope.getRemaining = TodoService.getRemaining;
+		$scope.clearCompletedTasks = TodoService.clearCompletedTasks;
+		$scope.deleteTask = TodoService.deleteTask;
+		$scope.markCompleted = TodoService.markTaskDone;
+
+		$scope.btnLabel = "Add";
+		$scope.inputTask = "";
+
+		$scope.addTask = function() {
+			TodoService.addTask($scope.inputTask);
 			$scope.inputTask = "";
 
-			$scope.addTask = function() {
-				$scope.tasks.push({
-					task: $scope.inputTask,
-					done: false
-				});
-				$scope.inputTask = "";
+			$('#tasklist').html(Mustache.to_html(this.template, {
+				"tasks": this.taskList
+			}));
+		};
 
-				$('#tasklist').html(Mustache.to_html(this.template, {
-					"tasks": this.taskList
-				}));
-			};
-
-			$scope.getRemaining = function() {
-				var count = 0;
-				angular.forEach($scope.tasks, function(task) {
-					if (!task.done) count++;
-				});
-
-				return count;
-			};
-
-			$scope.clearCompletedTasks = function() {
-				var i = $scope.tasks.length;
-				while (i--){
-					var task = $scope.tasks[i];
-					if (task.done) {
-						$scope.deleteTask(task);
-					}
-				}
-			};
-
-			$scope.markCompleted = function(task) {
-				task.done = true;
-			};
-
-			$scope.deleteTask = function(task) {
-				var index = $scope.tasks.indexOf(task);
-				$scope.tasks.splice(index, 1);
-			};
-
-			$scope.applyStyle = function(task) {
-				if (task.done) return { 'text-decoration':'line-through'}
-			};
+		$scope.applyStyle = function(task) {
+			if (task.done) return { 'text-decoration':'line-through'}
+		};
 	});
 
 </script>
