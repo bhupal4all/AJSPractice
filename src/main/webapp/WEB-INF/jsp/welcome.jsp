@@ -9,7 +9,6 @@
    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/angular.js"></script>   
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
-   <script src="${pageContext.request.contextPath}/resources/js/mustache.min.js"></script>   
    
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">   
 </head>
@@ -30,7 +29,7 @@
 		</div>
 		<div>
 			<table id='tasklist' class='table table-bordered table-hover'>
-				<tr ng-repeat="task in tasks">
+				<tr ng-repeat="task in tasks | orderBy : 'done'">
 					<td width='50px;' style='text-align: center'>
 						<button class="btn btn-default btn-xs">
 							<span class="glyphicon glyphicon-ok" ng-click='markCompleted(task)' ng-hide="task.done"></span>
@@ -60,6 +59,9 @@
 			}, {
 				task: 'Two',
 				done: true
+			}, {
+				task: 'Three',
+				done: false
 			}];
 
 		this.getTasks = function() {
@@ -96,7 +98,7 @@
 			while (i--){
 				var task = tasks[i];
 				if (task.done) {
-					deleteTask(task);
+					this.deleteTask(task);
 				}
 			}
 		};
@@ -115,10 +117,6 @@
 		$scope.addTask = function() {
 			TodoService.addTask($scope.inputTask);
 			$scope.inputTask = "";
-
-			$('#tasklist').html(Mustache.to_html(this.template, {
-				"tasks": this.taskList
-			}));
 		};
 
 		$scope.applyStyle = function(task) {
