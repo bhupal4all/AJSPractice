@@ -31,12 +31,9 @@
 			<table id='tasklist' class='table table-bordered table-hover'>
 				<tr ng-repeat="task in tasks | orderBy : 'done'">
 					<td width='50px;' style='text-align: center'>
-						<button class="btn btn-default btn-xs">
-							<span class="glyphicon glyphicon-ok" ng-click='markCompleted(task)' ng-hide="task.done"></span>
-							<span class="glyphicon glyphicon-remove" ng-click='deleteTask(task)' ng-hide="!task.done"></span>
-						</button>
+						<task-button ng-model="task" mark-completed-fn="markCompleted" delete-task-fn="deleteTask"></task-button>
 					</td>
-					<td><span ng-style="applyStyle(task)">{{task.task}}</span></td>
+					<td><task-info ng-model="task"></task-info></td>
 				</tr>
 			</table>
 		</div>
@@ -70,6 +67,7 @@
 
 		this.markTaskDone = function(task){
 			task.done = true;
+			//console.log('marking done at service for ' + task);
 		}
 
 		this.addTask = function(taskName){
@@ -91,6 +89,7 @@
 		this.deleteTask = function(task) {
 			var index = tasks.indexOf(task);
 			tasks.splice(index, 1);
+			//console.log('deleting at service at ' + index + ' ' + task);
 		};
 
 		this.clearCompletedTasks = function() {
@@ -100,6 +99,61 @@
 				if (task.done) {
 					this.deleteTask(task);
 				}
+			}
+		};
+	});
+
+	app.directive('taskInfo', function($parse){
+		var taskInfo = {};
+		
+		taskInfo.restrict = 'E';
+		taskInfo.require = '^ngModel';
+		taskInfo.scope = {
+			task: "=ngModel"
+		};
+		taskInfo.template = '<span>{{task.task}}</span>';
+
+		taskInfo.controller = function ($scope, $element) {
+			$scope.$watch('task', function(){
+				if ($scope.task.done){
+					$element.css({'text-decoration':'line-through'});
+				};
+			}, true);
+        }
+
+		return taskInfo;
+	});
+
+	app.directive('taskButton', function($parse){
+		return {
+			restrict: 'E',
+			require: '^ngModel',
+			scope: {
+				task: "=ngModel",
+				deleteTaskFn: '&',
+				markCompletedFn: '&'
+			},
+			template: '<button class="btn btn-default btn-xs"><span class="glyphicon"></span></button>',
+			link: function($scope, $element, attrs){
+				$element.on('click', function() {
+					if ($element.find('.glyphicon').hasClass('glyphicon-ok')) {
+						$element.find('.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+
+						$scope.$apply(function(){
+							$scope.markCompletedFn()($scope.task);
+						});
+					} else if ($element.find('.glyphicon').hasClass('glyphicon-remove')) {
+						$scope.$apply(function(){
+							$scope.deleteTaskFn()($scope.task);
+						});					
+					}
+				});
+			},
+			controller: function($scope, $element) {
+				if (!$scope.task.done)
+					$element.find('.glyphicon').addClass('glyphicon-ok');
+				else
+					$element.find('.glyphicon').addClass('glyphicon-remove');
 			}
 		};
 	});
@@ -122,6 +176,7 @@
 		$scope.applyStyle = function(task) {
 			if (task.done) return { 'text-decoration':'line-through'}
 		};
+
 	});
 
 </script>
